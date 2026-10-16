@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ถึงเธอ คนที่ฉันรัก 💌</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#6b2e4a;--soft:#9a5b78;--card:#fffafc;--pink:#ff7eb6;--bg:#fff0f6;--shadow:#f8cfe0;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--ink:#ffe3ef;--soft:#e8b4cc;--card:#3a1f33;--shadow:#1d0e1a}}
+:root[data-theme="dark"]{color-scheme:dark;--ink:#ffe3ef;--soft:#e8b4cc;--card:#3a1f33;--shadow:#1d0e1a}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;height:100dvh;overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%;user-select:none;-webkit-user-select:none}
+body{font-family:'Mali','Sarabun','Noto Sans Thai',sans-serif;color:var(--ink);background:var(--bg);transition:background .8s;overflow:hidden;-webkit-tap-highlight-color:transparent}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) body{background:var(--bgd,#2a1426)}}
+:root[data-theme="dark"] body{background:var(--bgd,#2a1426)}
+#floaty{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+#floaty span{position:absolute;bottom:-40px;animation:up linear forwards;opacity:.7}
+/* ข้อความรักลอยลางๆ ที่พื้นหลัง */
+#floaty span.ft{opacity:.2;font-weight:700;color:var(--pink);white-space:nowrap;bottom:-60px}
+@keyframes up{to{transform:translateY(-115vh) rotate(25deg);opacity:0}}
+main{position:relative;height:100%;max-width:560px;margin:0 auto;padding:16px 18px 86px}
+.page{position:absolute;inset:16px 18px 86px;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;visibility:hidden;transform:translateX(40px) scale(.97);transition:all .5s cubic-bezier(.3,1.4,.5,1)}
+.page.on{opacity:1;visibility:visible;transform:none}
+.page.past{transform:translateX(-40px) scale(.97)}
+.card{position:relative;background:var(--card) radial-gradient(color-mix(in srgb,var(--pink) 20%,transparent) 2px,transparent 2.5px) 0 0/22px 22px;border:3px dashed color-mix(in srgb,var(--pink) 50%,transparent);border-radius:36px 36px 36px 10px;padding:34px 24px 26px;width:100%;max-height:100%;overflow-y:auto;box-shadow:0 10px 0 var(--shadow);text-align:center}
+.card::before{content:'🎀';position:absolute;top:6px;left:16px;font-size:26px;transform:rotate(-14deg)}
+.card::after{content:'🐾';position:absolute;top:8px;right:16px;font-size:20px;opacity:.6}
+.emoji{font-size:64px;line-height:1;display:inline-block;animation:bob 2.2s ease-in-out infinite;cursor:pointer}
+.emoji:active{animation:wiggle .4s}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-6deg)}}
+@keyframes wiggle{25%{transform:rotate(-20deg) scale(1.2)}75%{transform:rotate(20deg) scale(1.2)}}
+h1,h2{font-weight:700;color:var(--pink);margin:10px 0 12px;line-height:1.3}
+h1{font-size:32px}h2{font-size:25px}
+p{font-size:17px;line-height:1.95;color:var(--ink);text-align:left;margin-top:8px}
+.cap{font-size:14px;color:var(--soft);text-align:center;margin-top:14px}
+ul{list-style:none;padding:0;margin-top:10px;text-align:left}
+li{font-size:16.5px;line-height:1.7;padding:9px 14px;margin-top:9px;border-radius:18px;background:color-mix(in srgb,var(--pink) 14%,transparent)}
+li:nth-child(2n){background:color-mix(in srgb,#ffc94d 22%,transparent)}
+li:nth-child(3n){background:color-mix(in srgb,#6fd6b8 22%,transparent)}
+.btn{font-family:inherit;font-size:18px;font-weight:700;border:0;border-radius:999px;padding:14px 30px;margin-top:18px;background:var(--pink);color:#fff;box-shadow:0 6px 0 #d4558f;cursor:pointer;transition:transform .15s}
+.btn:active{transform:translateY(4px);box-shadow:0 2px 0 #d4558f}
+nav{position:fixed;left:0;right:0;bottom:0;padding:10px 16px calc(14px + env(safe-area-inset-bottom,0px));display:flex;align-items:center;justify-content:center;gap:12px}
+nav button{width:54px;height:54px;border-radius:50%;border:0;font-size:22px;background:var(--card);color:var(--pink);box-shadow:0 4px 0 var(--shadow);cursor:pointer;font-family:inherit}
+nav button:disabled{opacity:.35}
+#dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;max-width:180px}
+#dots i{width:10px;height:10px;border-radius:50%;background:var(--shadow);transition:all .3s}
+#dots i.on{background:var(--pink);transform:scale(1.5)}
+#deco{position:fixed;inset:0;pointer-events:none}
+#deco span{position:absolute;font-size:34px;animation:bob 3.5s ease-in-out infinite}
+.love{margin-top:18px;padding:16px 14px;border-radius:24px;background:color-mix(in srgb,var(--pink) 16%,transparent);font-weight:700;font-size:22px;line-height:1.5;color:var(--pink);animation:boom .7s cubic-bezier(.3,1.6,.5,1)}
+.love small{display:block;font-size:15px;color:var(--soft);margin-top:4px;font-weight:600}
+@keyframes boom{from{transform:scale(.2) rotate(-8deg);opacity:0}}
+.pop{position:fixed;pointer-events:none;font-size:24px;animation:pop .9s ease-out forwards;z-index:9}
+@keyframes pop{to{transform:translate(var(--x),var(--y)) scale(.4);opacity:0}}
+button:focus-visible{outline:3px solid var(--pink);outline-offset:3px}
+
+/* ---- Heart spin + kiss popup ---- */
+.hs-wrap{position:fixed;inset:0;pointer-events:none;z-index:20;perspective:700px;display:flex;align-items:center;justify-content:center}
+.hs{position:relative;width:0;height:0;transform-style:preserve-3d;animation:hspin 2.6s cubic-bezier(.45,.05,.3,1) forwards}
+.hs span{position:absolute;font-size:18px;line-height:1;transform:translate(-50%,-50%)}
+@keyframes hspin{
+ 0%{transform:scale(.1) rotateY(0);opacity:0}
+ 15%{opacity:1}
+ 70%{transform:scale(1.1) rotateY(900deg);opacity:1}
+ 100%{transform:scale(1.5) rotateY(1080deg);opacity:0}}
+.kiss{position:fixed;left:50%;top:50%;z-index:21;pointer-events:none;white-space:nowrap;font-size:40px;font-weight:700;color:#fff;background:var(--pink);padding:14px 30px;border-radius:999px;box-shadow:0 8px 0 #d4558f;opacity:0;transform:translate(-50%,-50%) scale(.2);animation:kiss 3.4s ease-out forwards}
+@keyframes kiss{
+ 0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(-10deg)}
+ 12%{opacity:1;transform:translate(-50%,-50%) scale(1.25) rotate(4deg)}
+ 22%{transform:translate(-50%,-50%) scale(1) rotate(0)}
+ 70%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}
+ 100%{opacity:0;transform:translate(-50%,-62%) scale(.95)}}
+
+/* อีโมจิหัวใจ/หมี ลอยออกมาตอน "จุ๊บมั้วะ" */
+.kiss-fx{position:fixed;left:50%;top:50%;z-index:22;pointer-events:none;opacity:0;animation:kfx var(--d) ease-out forwards}
+@keyframes kfx{
+ 0%{opacity:0;transform:translate(-50%,-50%) scale(.3) rotate(0)}
+ 15%{opacity:1}
+ 65%{opacity:1}
+ 100%{opacity:0;transform:translate(calc(-50% + var(--x)),calc(-50% + var(--y))) scale(1) rotate(var(--r))}}
+
+@media (max-width:380px){h1{font-size:27px}h2{font-size:22px}p{font-size:15.5px}.emoji{font-size:52px}.card{padding:22px 18px}.kiss{font-size:32px;padding:12px 24px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="floaty" aria-hidden="true"></div>
+<div id="deco" aria-hidden="true"><span style="top:calc(8px + env(safe-area-inset-top,0px));left:8px">☁️</span><span style="top:calc(12px + env(safe-area-inset-top,0px));right:12px;animation-delay:-1s">⭐</span><span style="bottom:92px;left:6px;animation-delay:-2s">🌷</span><span style="bottom:92px;right:6px;animation-delay:-.5s">🧸</span></div>
+<main id="stage">
+
+<section class="page"><div class="card">
+<span class="emoji">💌</span>
+<h1>เรียงความเรื่อง<br>Changply Rak Aeh on Rainbow bridge</h1>
+<p style="text-align:center">เรียงความฉบับนี้มีความยาวมากแต่ไม่เท่ากับความรู้สึกของช้างพลายที่มีให้เอ๊ะ😱😱<br>แต่เรียงความฉบับนี้อยากให้เอ๊ะรู้ว่า<br>ทุกบรรทัดเขียนด้วยใจของช้างพลายจริงๆ</p>
+<button class="btn" onclick="go(1)">กดสิๆๆๆ 💕</button>
+<div class="cap">คำเตือน!! ผู้อ่านอาจมีอาการเขิน โปรดแจ้งผู้เขียนเว็บเพื่อรับจุ้บ⚠️</div>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">🌸</span>
+<h2>บทที่ 1 ตั้งแต่วันแรกที่เค้าเจออ้วน👀</h2>
+<p>ตั้งแต่วันแรกที่เค้าได้เข้ามาเรียนห้องเดียวกับอ้วนนะ บังเอิ๊ญบังเอิญตอนนั้นเราเข้ามาเทอมเดียวกันพร้อมกันอีกต่างหาก</p>
+<p>ตอนที่เค้าเห็นหน้าอ้วนครั้งแรกเค้าก็คิดแล้วว่า "ก็คงจะเป็นแค่ผู้หญิงธรรมดาทั่วไปหน้าตาก็งั้นๆ"</p>
+<p>ตอนนั้นเค้าก็เลยไม่ได้สนใจอ้วนเลยแม้แต่นิดเดียว</p>
+<p>"3ชิ ตัวก้ดำใครจะไปชอบพูดจาก็ไม่เพราะ ชอบด่า ผู้หญิงแบบที่ผู้ชายที่ไหนเค้าก้ชอบกัน"</p>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">☀️</span>
+<h2>บทที่ 2 เริ่มได้ทำความรู้กับอ้วน</h2>
+<p>หลังจากที่เค้าได้เริ่มพูดคุยทำความรู้จักกับอ้วน เค้าก้รู้สึกว่าผู้หญิงคนนี้ดูพูดคุยด้วยสนุกมากๆ แถมเป็นคนที่ตลกและก็สร้างสรรค์อีกต่างหาก</p>
+<p>วาดรูปก็สวย เทสฟังเพลงก็เหมือนกับเค้า แถมยังเล่นเกม Rov เก่งอีกต่างหาก</p>
+<p>เรียนก็เก่งวันนั้นเค้ายังจำวันที่อ้วนติวให้เพื่อนๆแล้วเค้ายังไปนั่งฟังได้อยู่เลย</p>
+<p>ถึงแม้ช่วงนั้นเพื่อนเค้าไอเต มันจะไปยั่วโมโหอ้วนจนอ้วนโมโหก้เถอะ</p>
+<p>แถมอ้วนก็ยังเป็นคนแรกๆ ที่คอยปลอบ คอยให้ความช่วยเหลือ และก้คอยเป็นปรึกษาให้เค้าตลอด</p>
+<p>แล้วหลังจากนั้นทั้งอ้วน ทั้งเค้าก็ต่างแยกย้ายกันไปมีแฟน</p>
+<p>จริงๆ เค้าเองก็เคยแอบคิดหลังจากเริ่มรู้จักได้คุยกับอ้วนว่าถ้าเค้าชอบอ้วนขึ้นมาจะเป็นยังไง?</p>
+<p>"แต่ช่างเถอะ เดี๋ยวก็คงไม่ได้เจอกันละเอ๊ะก็จะย้ายห้อง คงจะไม่ได้ติดต่อกันอีกละมั้ง"</p>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">😊</span>
+<h2>บทที่ 3 หลังจากการแยกย้าย</h2>
+<p>หลังจากที่อ้วนกับเค้าเลิกคุยกันไป เค้าก็ได้แต่ใช้ชีวิตไปเรื่อยๆตามปกติ</p>
+<p>กลับไปเล่นเกมกับเพื่อนๆในดิสเรื่อยเปื่อยไปวันๆ เค้าได้พบปะผู้คนโลกออนไลน์เยอะมาก</p>
+<p>ช่วงนั้นเป็นช่วงที่เค้าเหงามากๆ เค้าได้มีคนคุยเข้ามาในชีวิตแต่ก้ไม่มีใครทำให้เค้ารู้สึกดีได้เลย แล้วเค้าก้เลือกที่จะอยู่คนเดียวไปจนกว่าจะเจอคนที่ดีกว่านี้</p>
+<p>จนบางทีเค้าก้มีแอบไปส่องอ้วนตามเกมต่างๆเพราะอะไรก็ไม่รู้(สงสัยอาจจะเพราะคิดถึงตอนได้คุยด้วยมั้ง)</p>
+<p>แถมทุกครั้งที่อ้วนทักมาเค้าก็แอบรู้สึกดีใจแปลกๆที่ได้คุยกับคนๆนี้ แต่มันก้มีแฟนอะเนาะคงจะได้แค่เก็บไว้ในใจนั่นแหละ</p>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">🫂</span>
+<h2>บทที่ 4 การหวนกลับมา</h2>
+<p>หลังจากที่ผ่านมาหลายวัน เค้าก้ได้ข่าวว่าอ้วนเลิกกับแฟน ณ ตอนนั้นเค้าเป็นห่วงอ้วนมากๆ</p>
+<p>ในวันที่อ้วนทักมาหาบอกมีเรื่องจะคุย ในตอนนั้นเค้าสัมผัสได้ถึงอะไรสักอย่างที่มันไม่เหมือนเดิมแต่ก็ไม่รู้มันคืออะไร</p>
+<p>ตอนนั้นด้วยความที่เห็นแก่ที่เคยเป็นเพื่อนกันเลยเลือกที่จะคุย</p>
+<p>ในตอนที่ได้รับฟังเรื่องราวต่างๆจากอ้วน ตอนนั้นเค้ารู้สึกว่าเค้าสงสารอ้วนมากๆ ไม่อยากให้อ้วนเสียใจไปมากกว่านี้</p>
+<p>ตอนนั้นเค้าพยายามอยู่ข้างอ้วน พยายามปลอบ พยายามหาอ้วนพาทำอะไรก้ได้ให้อ้วนรู้สึกดีขึ้น</p>
+<p>จนช่วงที่เค้าได้นอนเฝ้าอ้วนใน Discord เค้าก็รู้สึกว่าเค้าอยากดูแลผู้หญิงคนนี้ขึ้นมาโดยไม่มีสาเหตุ</p>
+<p>และนั่นก็เป็นครั้งแรกว่าผู้หญิงที่เค้าเคยคิดว่าหน้าตาธรรมดาในวันนั้นจะโตมากลายเป็นผู้หญิงที่มีเสน่ห์สุดๆในวันนี้</p>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">🤔</span>
+<h2>เอายังไงกับผู้หญิงคนนี้ต่อไปดีนะ?</h2>
+<ul>
+<li>นี่เราต้องอยู่เฝ้ามันไปแบบนี้ทุกวันเลยหรอ?</li>
+<li>เราจะทิ้งผู้หญิงคนนี้ไว้แบบนี้ดีมั้ย?</li>
+<li>เราอยู่แบบนี้กับมันทุกวันจะดีหรอ?</li>
+<li>เมื่อไหร่มันจะมูฟออนได้?</li>
+</ul>
+<div class="cap">(ในตอนนั้นมีแต่ความสงสัยผุดขึ้นมาในหัวเค้าเต็มไปหมด)</div>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">🌱</span>
+<h2>บทที่ 5 จุดเริ่มต้นครั้งใหม่</h2>
+<p>ในตอนนั้นเองที่ทุกอย่างยังเป็นคำถามสำหรับตัวเค้าเต็มไปหมด เค้าก็เริ่มรู้สึกถึงอะไรอย่างนึงที่เค้าไม่ได้รู้สึกมานาน</p>
+<p>นั่นก็คือ ความรัก... ในตอนนั้นเองหลังจากการนอนคาสายกับอ้วนมาหลายคืน แถมอ้วนยังทักหาเค้าบ่อยๆ คอยทักถามคอยเป็นห่วงแถมยังมานั่งรอเค้าว่างอีกต่างหาก(น่ารักชะมัดเลย)</p>
+<p>ตอนนั้นเองเค้าก็เริ่มแอบรู้สึกหวั่นไหวกับสิ่งที่อ้วนทำให้เค้าจนเค้าเริ่มรู้สึกว่าเค้ากำลังชอบคนๆนี้</p>
+<p>แต่ในตอนนั้นเค้าก็ไม่กล้าพูดออกไปตรงๆ เพราะยังไม่แน่ใจกับตัวเองมากนัก จนกระทั่งคืนนั้นที่อ้วนพูดว่า "อ้วนก็แอบสนใจในตัวเค้า"</p>
+<p>ตอนนั้นเค้ารู้สึกถึงความหวัง ที่จะก้าวเดินต่อไปกับความรู้สึกตัวเองที่มีกับอ้วน แต่ถึงหลังจากที่พูดออกไปทุกอย่างจะเละไม่เป็นท่า</p>
+<p>ตอนนั้นเค้าเสียใจมากๆ แล้วก็คิดกับตัวเองเอาไว้ว่าจะชอบผู้หญิงคนนี้สัก 10 ปี จนกว่าตัวเองจะมีโอกาส ได้คนนี้มาครอบครองให้ได้</p>
+<p>ถึงตอนนั้นที่เค้าจะเจ็บปวดมากแค่ไหนที่เห็นอ้วนคุยกับอื่น ชอบคนอื่น เค้าก็ยังตัดสินใจที่ยังจะชอบคนๆนี้ต่อไปไม่ว่าจะยังไง</p>
+<p>สุดท้ายแล้วในตอนนั้นเค้าก็ดันทำอะไรผิดพลาดลงไปมากมายเพราะความเสียใจ จนสุดท้ายตอนนั้นเค้าก็เลือกที่จะออกมาอยู่คนเดียว</p>
+<p>เพราะรู้สึกว่าตอนนั้นเค้าคงจะเป็นตัวปัญหามากเกินไป แล้วก็คิดว่าคงจะแอบส่องอ้วนไปวันๆ คอยเฝ้ามองอยู่ไกลๆคอยเป็นห่วงตลอด</p>
+<p>เค้าเจ็บใจมากทุกครั้งที่เห็นอ้วนรีโพสอะไรเศร้าๆ ในตอนนั้นที่เห็นอ้วนลงสตอรี่อะไรก็ตามเค้าโคตรอยากจะทักไปหาอ้วนเลย</p>
+<p>ถึงในตอนนั้นเราจะมีปัญหากันมากแค่ไหนแต่การที่อ้วนทักมาหรือการที่ได้คุยกอ้วนก็ยังเป็นความดีใจที่เค้าไม่สามารถปฏิเสธได้ตลอด</p>
+<p>เค้านอนคิดถึงอ้วนทุกคืน คอยแอบไปส่องตลอดเวลา ทุกครั้งที่มีการแจ้งเตือนเข้ามาเค้าพยายามภาวนาให้เป็นการแจ้งเตือนจากอ้วนตลอด</p>
+<p>เค้าอยากได้อ้วนกลับคืนมามากๆในตอนนั้น แต่เค้าก็คิดว่าเพราะตัวเค้าเองเลยทำให้อ้วนหลุดมือไปไกล เกินกว่าจะคว้ากลับมาแล้ว</p>
+<p>ในตอนนั้นเค้าหมกมุ่นกับการดูดวงสุดๆ ได้แต่ภาวนาให้สักวันอ้วนจะกลับมาหาเค้า...</p>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">🥺</span>
+<h2>บทสุดท้าย ความหวังและสิ่งที่อยากจะบอก</h2>
+<p>สุดท้ายในตอนนั้นเค้าก็ได้แต่บ่นให้ทุกคนฟังว่าคิดถึงอ้วนแค่ไหน แต่สุดท้ายเค้าก็คงต้องเลือกที่จะมูฟออนจากอ้วนแล้วจริงๆ</p>
+<p>ถึงแม้ว่าความหวังเค้าจะยังคงส่องสว่างอยู่เสมอว่าอ้วนจะต้องกลับมา จนสุดท้ายวันที่อ้วนทักมาหาเค้าตอนนั้นเค้าพยายามคุยกับอ้วนด้วยความใจเย็นและเป็นกันเองมากที่สุด</p>
+<p>เค้าพยายามหักห้ามใจตัวเองสุดๆเพราะกลัวว่าถ้าเค้าตกหลุมรักอ้วนอีกเค้าจะทำอะไรไม่ดีลงไป แต่ใครจะไม่รู้หละว่าเค้าเริ่มกลับไปตกหลุมรักอ้วนตั้งแต่ที่คิดแบบนั้นแล้ว</p>
+<p>แต่ถึงอย่างนั้นเค้าก็ยังไม่รู้ตัวว่าเค้าได้ก้าวข้ามเขตแดนคำว่าหักห้ามใจตัวเองไปแล้วเค้ายังบอกตัวเองอยู่เสมอทุกวันว่า ต่อให้อ้วนหายไปเค้าก็จะไม่สนใจ</p>
+<p>แต่สุดท้ายเวลาที่อ้วนเงียบหรือหายไปแม้แต่เสี้ยววินาทีเค้ากลับรู้สึกคิดถึงและกระวลกระวายอย่างบอกไม่ถูก อยากรู้ตลอดเวลาว่าอ้วนทำอะไรอยู่ เป็นยังไง อยากคุยด้วย</p>
+<p>ถึงตอนนั้นเค้าเองก็คิดว่าเป็นแบบนี้ต่อไปก็ไม่แย่อย่างน้อยๆ อ้วนก็ยังคุยกับเค้าจนเค้าเองก้ไม่รู้สึกเหงาอีกด้วย แต่เค้าก็คิดมาตลอดว่าถ้าเป็นแบบนี้ต่อไปจะดีแน่หรอ?</p>
+<p>จนกระทั่งเค้าเริ่มหมกมุ่นความคิดคิดตัวเองอีกครั้งว่าจะเอายังไงกับความสัมพันธ์ในตอนนี้ต่อไปยังไงดี แต่สิ่งที่ไม่คาดคิดก็เกิดขึ้นในตอนที่อ้วนถามคำถามเค้าว่า</p>
+<p>อ้วนจะรับขอเสนอของอ้วนมั้ยโดยอ้วนจะไม่มีคนอื่น แล้วเค้าก็จะต้องไม่มีคนอื่น ซึ่งในตอนนั้นเค้ายอมรับว่าตอนที่อ้วนถามเค้ากำลังเล็งๆรุ่นน้องคนนึงพอดี แต่พออ้วนถามแบบนี้ปุ๊บ</p>
+<p>เค้าปัดน้องคนนี้ตกกระป๊องไปเลย(แถมมารู้ทีหลังด้วยว่าน้องมีแฟนแล้ว) ในตอนนั้นเค้ายังแอบลังเลอยู่นิดนึงว่าจะยอมรับขอเสนอนี้ดีมั้ย แต่ใครสนล่ะโอกาสดีๆแบบนี้อยู่ตรงหน้าก็ต้องรีบคว้าได้ดิค้าบ</p>
+<p>เหมือนตอนนั้นที่เค้าไปดูดวงมาเป๊ะๆ ว่าจะมีโอกาสเข้ามาให้รีบคว้าไว้ แต่ลึกๆในใจแล้วตอนที่อ้วนถามเค้ารู้สึกดีใจมากๆ เพราะมันคือสิ่งที่เค้ารอคอยจากอ้วนมาตลอด</p>
+<p>หลังจากวันนั้นที่เค้าตอบตกลงอ้วนไป เค้ารู้สึกว่าทุกๆอย่างในชีวิตเค้าเริ่มมีความสุขขึ้นเยอะมากๆ ตั้งแต่วันนั้นที่เค้ามีอ้วนเค้ารู้สึกว่าทุกอย่างมันดูสดใสขึ้นไปหมด</p>
+<p>เค้ารู้สึกมีความสุขมาตลอดตั้งแต่ที่ได้คุยกับอ้วน เค้าชอบเวลาเราทั้งคู่ได้ Deep talk กัน ชอบฟังเวลาอ้วนเล่าเรื่องวัยเด็กของตัวเองให้เค้าฟัง มันเหมือนเค้าได้เข้าไปอยู่พื้นที่ของอ้วนที่พิเศษมากๆ</p>
+<p>เค้าได้เห็นหลายๆด้านภายในตัวอ้วนเยอะมากๆ เค้าชอบ Inner Child ของอ้วนมากๆ และตัวเค้าเองก็ได้เห็น Issue และ Trauma ต่างๆในตัวอ้วนมากมายจนเค้ารู้สึก ว่าเค้าอยากจะเป็นพลาสเตอร์ทีปิดรอยพวกนั้นให้พอเค้ารู้สึกตัวอีกทีเค้าก็ตกหลุมรักที่แปลว่าเค้ารักคนๆนี้ไปแล้วจริงๆ เค้ามีความรู้สึกที่อยากดูแลผู้หญิงคนนี้ไปตลอดชีวิต ทำยังไงก็ได้ให้ผู้หญิงคนนี้มีความสุข</p>
+<p>เค้าอยากให้ผู้หญิงคนนี้อยู่เคียงเค้าตลอดไป เค้าชอบเวลาที่ได้เห็นรอยยิ้มของผู้หญิงคนนี้ เค้ารู้สึกว่ารอยยิ้มของผู้หญิงเป็นอะไรที่งดงามเอามากๆ เป็นสิ่งสวยงามที่สุดที่เค้าเคยเห็นมาและมันยังเป็นสมบัติล้ำค่าที่ทำให้ผู้หญิงคนนี้ดูน่ารักสุดๆไปเลยด้วย</p>
+<p>ไม่ว่าเค้าจะมองอ้วนจากมุมไหนเค้าก็รู้สึกว่าอ้วนทั้งน่ารักและก็สวยเอามากๆ แต่ถึงอยากนั้นเพียงแค่ 2 คำนี้ก็ไม่เพียงพอที่จะบรรยายความงามที่เค้าเห็นออกมาได้ทั้งหมด</p>
+<p>การที่จะให้อ้วนรับรู้ได้ว่า ความสวยงาม ความน่ารัก ความน่าเอ็นดู ความน่าหลงไหล ความมีเสน่ห์ หรือแม้กระทั่งความรัก ที่เค้ามองเห็นอ้วนในสายตาเค้ามันเยอะขนาดไหน คงจะต้องผ่าสมองกับจิตใจเค้าให้อ้วนเข้าไปเห็นกับตาข้างใน</p>
+<p>ในวินาทีนั้นเค้ารู้สึกว่าการที่จะชมผู้หญิงคนนี้ว่าเป็นเทพธิดาหรือนางฟ้าก็คงจะไม่เกินจริงไปสะทีเดียว สตรีนี้มีสีผิวพรรณเป็นเอกลักษณ์ อันเป็นที่ประจักษ์ความงดงาม ดั่งกามเทพทรงโปรดดั่งของขวัญ อันตัวข้ามิอาจต้านสเน่หาของแก้วตา ทั้งไฝใต้ตาของเจ้าชวนให้หลง ตัวข้าคงคลั่งไคล้ไร้จุดจบ ทั้งเรือนร่างแสนสุดพิศวาสเอย</p>
+<p>หากตัวข้าได้เป็นเขย จักเป็นมหาโชคอันสูงส่ง โปรดทวยเทพสิ่งศักดิ์สิทธ์ ช่วยลิขิตตัวนางเป็นภรรยา สมปราถนาดั่งตัวข้า ที่ไขว่ขว้าหาหญิงงาม เพื่อมาเป็นคู่ครองตลอดชีวา</p>
+<p>ไม่ว่าสวยไหนของร่างกายหรือจิตใจอ้วนก้ล้วนแต่งดงาม ตั้งแต่หัวจรดเท้าอ้วนนั้นงามยิ่งกว่าสิ่งใดในโลก ทั้งไฝเสน่ห์ที่มีทั่วร่างกายโดยเฉพาะใต้ตาเป็นไฝที่มีเสน่ห์ สวย และเป็นจุดที่เค้าชอบที่สุดบนร่างกายอ้วน</p>
+<p>ทั้งรูปร่างขนาดร่างกายอ้วนก็อยู่ในเกณฑ์ที่น่ารักพอดีในสายตาเค้า ดวงตาและสายตาของอ้วนก็ยังอ่อนโยนเหมือนนิสัยที่มีต่อสิ่งรอบข้าง ถึงปากของอ้วนจะดูเผินๆแล้วธรรมดาทั่วไปแต่สำหรับเค้ามันดึงดูดเค้าให้หยุดจ้องไม่ได้ยังไงก็ไม่รู้</p>
+<p>สีผิวแทนยังเป็นเอกลักษณ์และเป็นอีกหนึ่งเสน่ห์สวยงามในตัวอ้วนมากๆ (อาจจะเป็นสิ่งที่เค้าชอบที่สุดของร่างกายอ้วนตั้งแต่แว็ปแรกที่เห็นเลยก็ว่าได้) ส่วนเรื่องรักๆใคร่ๆไม่ต้องพูดเยอะก็คงจะรู้ๆกันอยู่ โดยรวมแล้วร่างกายทั้งหมดของอ้วนเค้าให้ 100/10 ไปเลย!</p>
+<p>ไม่น่าเชื่อว่าผ่านมาแค่ 100 กว่าวันเค้าดันตกหลุมรักผู้หญิงคนนี้ได้มากเท่านี้ ภายในระยะเวลาเพียงแค่นี้เค้ากลับรู้สึกผูกพันธ์อย่างบอกไม่ถูก รู้สึกมีเป้าหมายใหม่ในชีวิตที่จะทำตัวเองให้ดีที่สุดเผื่อผู้หญิงคนนี้</p>
+<p>อีกทั้งยังทำให้เค้าคิดถึงตลอดเวลา มองภาพอนาคตที่มีกันและกัน ทำให้เค้าอยากดูแลถนุถนอม และอยากทำให้ผู้หญิงคนนี้มีความสุขที่สุดในโลก ถึงตัวเค้าเองจะเป็นผู้หญิงธรรมดาทั่วไปหน้าตาก็งั้นๆ ไม่ได้หล่อเหมือนดารา ไม่ได้รวยเหมือนเศรษฐี ไม่ได้โดดเด่นอะไรมากนัก</p>
+<p>แต่สิ่งนึงที่เค้ากล้ารับประกันเลยคือเค้ารักอ้วนอย่างสุดหัวใจ และตั้งใจรักอ้วนเอามากๆ เค้าจะพยายามทำทุกอย่างให้ได้อย่างที่พูด เค้าจะทำให้อ้วนไม่น้อยหน้าหญิงใดในโลก ทำให้ผู้หญิงทุกคนต้องอิจฉาที่มีเค้าเป็นคนรัก</p>
+<p>และทำให้อ้วนสุขสบายที่สุดให้ได้ สุดท้ายนี้เค้าขอบคุณอ้วนที่ยังอยู่กับเค้ามาตลอด ขอบคุณที่คอยยู่ข้างเค้าในวันที่เค้ารู้สึกแย่ ขอบคุณที่เข้ามาเป็นกำลังใจในชีวิตเค้า ขอบคุณที่สร้างความสุข รอยยิ้ม และเสียงหัวเราะให้กับเค้า ขอบคุณที่ทำให้ช่วงเวลาที่ผ่านมา 100 กว่าวันของเค้ามีชีวิตชีวาขึ้น</p>
+<p>ขอบคุณที่เข้ามาเป็นความงดงามให้เค้าได้ชื่มชม และก็ขอบคุณอีกหลายๆอย่างที่อ้วนทำให้เค้ารู้สึกดีและพยายามเพื่อเค้ามาตลอด เค้ารู้สึกโชคดีมากๆเลยนะที่ได้อ้วนมาเป็นผู้หญิงในชีวิตเค้า เค้าสัญญาว่าเค้าจะพาอ้วนเติบโตไปพร้อมกับเค้าจนมีอนาคตด้วยกันให้ได้! (อีกทั้งเรียงความนี้เค้าตั้งใจเอาไปชดเชยในเหตุการณ์วันนั้นด้วยที่เค้าเล่าเรื่องละมีปัญหากัน) </p>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji">🤞</span>
+<h2>คำสัญญาที่เค้าจะให้ไว้กับอ้วนโดยไม่มีวันเปลี่ยน</h2>
+<ul>
+<li>🍰 เค้าจะไม่มีวันปล่อยอ้วนไว้คนเดียว</li>
+<li>🫶 เค้าจะอยู่ดูแลและอยู่เคียงข้างอ้วนเสมอไป</li>
+<li>🌈 เค้าจะอยู่ให้กำลังใจและช่วยเหลืออ้วนในทุกๆด้าน</li>
+<li>💖 เค้าจะไม่มีวันทิ้งอ้วนไปไหนและจะรักอ้วนตลอดไป</li>
+</ul>
+</div></section>
+
+<section class="page"><div class="card">
+<span class="emoji" id="bigheart">💗</span>
+<h1>เค้ารักเธอนะครับ</h1>
+<p style="text-align:center">ขอบคุณที่อ่านมาจนถึงหน้าสุดท้ายนะครับคนเก่ง<br>เค้าอยากให้อ้วนรู้ไว้ว่าเค้ารักและทุ่มเทกับที่รักมากแค่ไหน<br>เพราะงั้นเราทั้งคู่มาจับมือก้าวไปข้างหน้าพร้อมกันนะ</p>
+<p style="text-align:center;color:var(--pink);font-weight:700">รักเธอที่สุด<br>จาก ChangPlyOnRainbowBridge 🧸</p>
+<button class="btn" onclick="finale(this)">กดตรงนี้สิ 🎉</button>
+<div id="love" class="love" hidden>💗ที่รักเป็นผู้หญิงที่เค้ารักที่สุดเยยยย💗<small>(You're love of my life)</small></div>
+</div></section>
+
+</main>
+
+<nav>
+<button id="prev" aria-label="ก่อนหน้า" onclick="go(i-1)">‹</button>
+<div id="dots"></div>
+<button id="next" aria-label="ถัดไป" onclick="go(i+1)">›</button>
+</nav>
+
+<script>
+const pages=[...document.querySelectorAll('.page')],dots=document.getElementById('dots');
+const bgs=['#fff0f6','#fff8ea','#fffbe3','#fff2ef','#eff8ff','#f2fbed','#f7f1ff','#fff0f6','#fff8ea','#ffeaf3'];
+const bgd=['#2a1426','#2d1f18','#2b2814','#2e1c1c','#16222e','#182a1c','#251a33','#2a1426','#2d1f18','#34142a'];
+let i=0;
+pages.forEach((_,n)=>{const d=document.createElement('i');dots.appendChild(d)});
+function go(n){
+  if(n<0||n>=pages.length)return;
+  i=n;
+  pages.forEach((p,k)=>{p.classList.toggle('on',k===i);p.classList.toggle('past',k<i)});
+  [...dots.children].forEach((d,k)=>d.classList.toggle('on',k===i));
+  document.documentElement.style.setProperty('--bg',bgs[i]);
+  document.documentElement.style.setProperty('--bgd',bgd[i]);
+  document.getElementById('prev').disabled=i===0;
+  document.getElementById('next').disabled=i===pages.length-1;
+  if(i===pages.length-1)setTimeout(confetti,500);
+}
+function burst(x,y,list,n){
+  for(let k=0;k<n;k++){
+    const s=document.createElement('div');s.className='pop';
+    s.textContent=list[Math.floor(Math.random()*list.length)];
+    const a=Math.random()*6.28,r=50+Math.random()*90;
+    s.style.cssText+=`left:${x}px;top:${y}px;--x:${Math.cos(a)*r}px;--y:${Math.sin(a)*r-40}px`;
+    document.body.appendChild(s);setTimeout(()=>s.remove(),900);
+  }
+}
+function confetti(){const w=innerWidth;for(let k=0;k<5;k++)setTimeout(()=>burst(w*(.15+k*.17),innerHeight*.45,['💖','🎉','🌸','⭐','💕','🧸'],8),k*160)}
+document.addEventListener('pointerdown',e=>{if(e.target.closest('nav'))return;burst(e.clientX,e.clientY,['💖','💕','✨','🌸'],6)});
+
+/* หัวใจเรียงเป็นรูปหัวใจหมุน 3D แล้ว "จุ๊บมั้วะ" ป๊อปอัป พร้อมหัวใจ/หมีลอยออกมาแล้วค่อยๆ จางหาย */
+let spinning=false;
+function heartSpin(){
+  if(spinning)return;spinning=true;
+  const size=Math.min(innerWidth,innerHeight)<500?8:11,N=32;
+  const wrap=document.createElement('div');wrap.className='hs-wrap';
+  const hs=document.createElement('div');hs.className='hs';
+  const icons=['💖','💗','💕'];
+  for(let k=0;k<N;k++){
+    const t=k/N*Math.PI*2;
+    const x=16*Math.pow(Math.sin(t),3);
+    const y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+    const s=document.createElement('span');s.textContent=icons[k%3];
+    s.style.left=x*size+'px';s.style.top=(y*size+size)+'px';
+    hs.appendChild(s);
+  }
+  wrap.appendChild(hs);document.body.appendChild(wrap);
+  setTimeout(()=>{
+    const kiss=document.createElement('div');kiss.className='kiss';kiss.textContent='จุ๊บมั้วะ 💋';
+    document.body.appendChild(kiss);
+    setTimeout(()=>kiss.remove(),3400);
+    kissFx(3400);
+  },1700);
+  setTimeout(()=>wrap.remove(),2700);
+  setTimeout(()=>{spinning=false},5100);
+}
+
+/* หัวใจ + หมี + อีโมจิน่ารักๆ ลอยออกมาจากข้อความ แล้ว fade ให้จบพร้อมกับตอนข้อความหาย */
+function kissFx(total){
+  const icons=['💖','💗','💕','🧸','💓','🐻','🌸','✨','💞','🎀'];
+  const t0=performance.now();
+  const timer=setInterval(()=>{
+    const t=performance.now()-t0;
+    if(t>2200){clearInterval(timer);return}
+    for(let k=0;k<2;k++){
+      const s=document.createElement('div');s.className='kiss-fx';
+      s.textContent=icons[Math.floor(Math.random()*icons.length)];
+      const a=Math.random()*Math.PI*2,r=90+Math.random()*130;
+      const dur=total-t;
+      s.style.cssText+=`font-size:${22+Math.random()*22}px;--d:${dur}ms;--x:${Math.cos(a)*r*1.3}px;--y:${Math.sin(a)*r-110}px;--r:${(Math.random()*60-30)|0}deg`;
+      document.body.appendChild(s);setTimeout(()=>s.remove(),dur+50);
+    }
+  },110);
+}
+function finale(b){document.getElementById('love').hidden=false;b.textContent='I LOVE U 💖';confetti();heartSpin()}
+
+const fl=document.getElementById('floaty');
+setInterval(()=>{if(document.hidden)return;const s=document.createElement('span');
+  s.textContent=['💗','💕','🌸','✨','☁️'][Math.floor(Math.random()*5)];
+  s.style.cssText=`left:${Math.random()*100}%;font-size:${14+Math.random()*18}px;animation-duration:${7+Math.random()*6}s`;
+  fl.appendChild(s);setTimeout(()=>s.remove(),13000)},900);
+
+/* ข้อความรักลอยลางๆ ที่พื้นหลัง */
+const words=['รัก','I love you','เค้ารักอ้วนที่สุดในโลก','my honey','my beautiful girl','รักนะครับ' , 'รักอ้วนที่สุด','รักมากๆเลย','รักนะจุ๊บๆ',];
+setInterval(()=>{
+  if(document.hidden)return;
+  const s=document.createElement('span');s.className='ft';
+  s.textContent=words[Math.floor(Math.random()*words.length)];
+  s.style.cssText=`left:${3+Math.random()*50}%;font-size:${16+Math.random()*14}px;animation-duration:${12+Math.random()*8}s`;
+  fl.appendChild(s);setTimeout(()=>s.remove(),21000);
+},2200);
+
+addEventListener('keydown',e=>{if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+let sx=null;
+addEventListener('touchstart',e=>sx=e.touches[0].clientX,{passive:true});
+addEventListener('touchend',e=>{if(sx===null)return;const d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>60)go(i+(d<0?1:-1));sx=null});
+go(0);
+</script>
+</body>
+</html>
